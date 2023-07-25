@@ -1,19 +1,38 @@
 package com.songr.songrapp;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Album {
-    @GetMapping("/albums")
-    public String albums(Model model) {
-        List<Album> albums = new ArrayList<>();
-        albums.add(new Album("Master of Puppets", "Metallica", 10, 3600, "METALRULZ.com"));
-        albums.add(new Album("Kitsch", "Avery Green", 12, 4000, "Shredtacular.com"));
-        albums.add(new Album("Scottland's Okayest", "Lewis Catapulti", 8, 3000, "URL 3"));
-        model.addAttribute("albums", albums);
-        return "albums";
+    private String title;
+    private String artist;
+    private int songCount;
+    private int length;
+    private String imageUrl;
+
+    public Album(String title, String artist, int songCount, int length, String imageUrl) {
+        this.title = title;
+        this.artist = artist;
+        this.songCount = songCount;
+        this.length = length;
+        this.imageUrl = imageUrl;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public int getSongCount() {
+        return songCount;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }
+
