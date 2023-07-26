@@ -1,17 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-<h1>Albums</h1>
-<div th:each="album : ${albums}">
-  <h2 th:text="${album.title}"></h2>
-  <p>Artist: <span th:text="${album.artist}"></span></p>
-  <p>Song Count: <span th:text="${album.songCount}"></span></p>
-  <p>Length: <span th:text="${album.length}"></span></p>
-  <img th:src="${album.imageUrl}" alt="Album cover">
-</div>
+<form action="/add-album" method="POST">
+    <label for="title">Album Title</label><br>
+    <input type="text" id="title" name="title" placeholder="Album Title"><br>
+
+    <label for="artist">Album Artist</label><br>
+    <input type="text" id="artist" name="artist" placeholder="Album Artist"><br>
+
+    <label for="songCount">Song Count</label><br>
+    <input type="number" id="songCount" name="songCount" placeholder="Song Count"><br>
+
+    <label for="length">Length (Minutes)</label><br>
+    <input type="number" id="length" name="length" placeholder="Length (Minutes)"><br>
+
+    <label for="imageUrl">ImageUrl</label><br>
+    <input type="text" id="imageUrl" name="imageUrl" placeholder="ImageUrl"><br>
+
+    <button type="submit">Submit</button>
+</form>
 </body>
 </html>
