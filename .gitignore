@@ -99,6 +99,7 @@ obj/
 # IntelliJ IDEA
 *.iws
 /out/
+src/main/resources/application.properties
 
 # User-specific configurations
 **/.idea/libraries/

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .scrollable-table {
+      height: 300px;
+      width: 900px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+<h1>Albums</h1>
+<div class="scrollable-table">
+  <table>
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Song Count</th>
+      <th>Length</th>
+      <th>Image URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="album : ${albums}">
+      <td th:text="${album.title}"></td>
+      <td th:text="${album.artist}"></td>
+      <td th:text="${album.songCount}"></td>
+      <td th:text="${album.length}"></td>
+      <td><img th:src="${album.imageUrl}" alt="Album cover"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Add New Album</h2>
+<form action="/add-album" method="POST">
+  <label for="title">Album Title</label><br>
+  <input type="text" id="title" name="title" placeholder="Album Title"><br>
+
+  <label for="artist">Album Artist</label><br>
+  <input type="text" id="artist" name="artist" placeholder="Album Artist"><br>
+
+  <label for="songCount">Song Count</label><br>
+  <input type="number" id="songCount" name="songCount" placeholder="Song Count"><br>
+
+  <label for="length">Length (Minutes)</label><br>
+  <input type="number" id="length" name="length" placeholder="Length (Minutes)"><br>
+
+  <label for="imageUrl">ImageUrl</label><br>
+  <input type="text" id="imageUrl" name="imageUrl" placeholder="ImageUrl"><br>
+
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>
