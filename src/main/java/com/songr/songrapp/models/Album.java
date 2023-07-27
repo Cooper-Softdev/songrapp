@@ -1,9 +1,7 @@
 package com.songr.songrapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -16,18 +14,13 @@ public class Album {
     private Integer length;
     private String imageUrl;
 
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Song> songs;
+
     protected Album() {
     }
-    public Album(String title, String artist, Integer songCount, Integer length, String imageUrl) {
-        this.title = title;
-        this.artist = artist;
-        this.songCount = songCount;
-        this.length = length;
-        this.imageUrl = imageUrl;
-    }
 
-    public Album(long id, String title, String artist, Integer songCount, Integer length, String imageUrl) {
-        this.id = id;
+    public Album(String title, String artist, Integer songCount, Integer length, String imageUrl) {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
@@ -81,6 +74,14 @@ public class Album {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 
     @Override
