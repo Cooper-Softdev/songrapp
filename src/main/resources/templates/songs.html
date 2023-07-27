@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Song</title>
+</head>
+<body>
+<div class="navbar">
+  <a href="/">Home</a>
+  <a href="/add-album">Add Album</a>
+  <a href="/add-song">Add Song</a>
+</div>
+<h1>Add a Song</h1>
+<div th:if="${error}" th:text="${error}" class="error"></div>
+<form action="/add-song" method="POST">
+  <label for="title">Song Title</label><br>
+  <input type="text" id="title" name="title" placeholder="Song Title"><br>
+
+  <label for="length">Length (Seconds)</label><br>
+  <input type="number" id="length" name="length" placeholder="Length (Seconds)"><br>
+
+  <label for="trackNumber">Track Number</label><br>
+  <input type="number" id="trackNumber" name="trackNumber" placeholder="Track Number"><br>
+
+  <label for="album">Album</label><br>
+  <input type="text" id="album" name="album" placeholder="Album"><br>
+
+  <button type="submit">Submit</button>
+</form>
+<h2>Songs</h2>
+<div class="scrollable-table">
+  <table>
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Length</th>
+      <th>Track Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="song : ${songs}">
+      <td th:text="${song.title}"></td>
+      <td th:text="${song.length}"></td>
+      <td th:text="${song.trackNumber}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
